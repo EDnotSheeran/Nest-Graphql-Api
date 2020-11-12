@@ -1,0 +1,12 @@
+[
+  {
+    "name": "default",
+    "type": "sqlite",
+    "database": "./data/database.sqlite",
+    "autoSchemaSync": true,
+    "entities": [
+      "dist/**/*.entity{.ts,.js}"
+    ],
+    "synchronize": true
+  }
+]
