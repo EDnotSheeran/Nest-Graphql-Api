@@ -13,7 +13,7 @@ import { User } from './user.entity';
 export class UserService {
   constructor(
     @InjectRepository(User)
-    private userRepository: Repository<User>
+    private userRepository: Repository<User>,
   ) {}
 
   async findAllUsers(): Promise<User[]> {
@@ -32,7 +32,9 @@ export class UserService {
     const userSaved = await this.userRepository.save(user);
 
     if (!userSaved) {
-      throw new InternalServerErrorException('Problema para criar um usuário');
+      throw new InternalServerErrorException(
+        'Problem to create an user. Try again',
+      );
     }
 
     return userSaved;
