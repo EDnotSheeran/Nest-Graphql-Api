@@ -27,6 +27,12 @@ export class UserService {
     return user;
   }
 
+  async findUserByEmail(email: string): Promise<User> {
+    const user = await this.userRepository.findOne({ where: { email } });
+    if (!user) throw new NotFoundException('Usuário não encontrado');
+    return user;
+  }
+
   async createUser(data: CreateUserInput): Promise<User> {
     const user = this.userRepository.create(data);
     const userSaved = await this.userRepository.save(user);
